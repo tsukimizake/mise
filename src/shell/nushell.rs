@@ -18,8 +18,8 @@ enum EnvOp<'a> {
 impl Display for EnvOp<'_> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            EnvOp::Set { key, val } => writeln!(f, "set,{key},{val}"),
-            EnvOp::Hide { key } => writeln!(f, "hide,{key},"),
+            EnvOp::Set { key, val } => writeln!(f, "$env.{key} = {val}"),
+            EnvOp::Hide { key } => writeln!(f, "hide-env {key}"),
         }
     }
 }
